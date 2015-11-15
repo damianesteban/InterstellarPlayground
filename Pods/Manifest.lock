@@ -1,0 +1,15 @@
+PODS:
+  - Interstellar (1.3.0):
+    - Interstellar/Core (= 1.3.0)
+    - Interstellar/Warpdrive (= 1.3.0)
+  - Interstellar/Core (1.3.0)
+  - Interstellar/Warpdrive (1.3.0):
+    - Interstellar/Core
+
+DEPENDENCIES:
+  - Interstellar
+
+SPEC CHECKSUMS:
+  Interstellar: 3d47f37eff7e81fbaa9a74bd903f362eb165b159
+
+COCOAPODS: 0.39.0
