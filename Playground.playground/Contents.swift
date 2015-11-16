@@ -8,6 +8,7 @@ enum InterstellarError: ErrorType {
 }
 
 enum Result<T> {
+
     case Success(T)
     case Error(InterstellarError)
     
@@ -31,6 +32,16 @@ enum Result<T> {
             }
         }
     }
+    
+    // flatMap first maps and then flattens the result.  If the result is a success the next function is executed, if it's a failure the error is returned immediately.
+    func flatMap<U>(f: T -> Result<U>) -> Result<U> {
+        switch self {
+        case let .Success(value):
+            return f(value)
+        case let .Error(error):
+            return .Error(error)
+        }
+    }
 }
 
 // The example:
@@ -42,7 +53,7 @@ toHash(["Batman", "Superman", "Aquaman"]) { (number) -> Void in
     print(number) // 3
 }
 
-// result has the is now .Success of type Int with the value 3
+// result is now .Success of type Int with the value 3
 Result.Success(["Batman", "Superman", "Aquaman"]).map(toHash)() { result in
     print(result) // Success(3)
 }
@@ -60,6 +71,21 @@ switch addOne(12) {
 case let .Success(value):
     print(value)
 case let .Error(error):
-    print(error)
+    print(error)  // "Error\n"
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
